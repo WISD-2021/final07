@@ -14,7 +14,7 @@ class AddTypeInUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('type')->unsigned()->after('password')->comment('使用者身分');
+            $table->boolean('type')->unsigned()->after('password')->default(0)->comment('使用者身分，0為會員 1為管理者');
         });
     }
 
