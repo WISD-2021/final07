@@ -15,7 +15,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->foreignId('user_id')->index();
             $table->string('identity',20)->comment('身分證');
             $table->string('phone',20);
             $table->string('address',30);
