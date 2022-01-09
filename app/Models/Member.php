@@ -19,4 +19,10 @@ class Member extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    //一個會員可以在購物車中加入多個器材
+    public function cart_items()
+    {
+        return $this->hasMany(Cart_item::class);
+    }
 }
