@@ -14,4 +14,10 @@ class Order extends Model
     {
         return $this->belongsTo(Member::class);
     }
+
+    //一個租賃單都有對應租賃明細中看到
+    public function order_details()
+    {
+        return $this->hasMany(Order_detail::class);
+    }
 }

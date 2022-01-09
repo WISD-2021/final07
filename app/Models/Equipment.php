@@ -20,4 +20,10 @@ class Equipment extends Model
     {
         return $this->hasMany(Cart_item::class);
     }
+
+    //一個器材都可以在任何租賃明細中看到
+    public function order_details()
+    {
+        return $this->hasMany(Order_detail::class);
+    }
 }
