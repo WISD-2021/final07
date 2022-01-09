@@ -14,5 +14,9 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    //一個會員可以有多筆訂單
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
