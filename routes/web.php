@@ -14,7 +14,7 @@ use App\Http\Controllers\ManagerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.eqipments.create');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
