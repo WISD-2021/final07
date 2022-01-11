@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Equipment;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
+use App\Models\Cart_item;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class EquipmentController extends Controller
 {
@@ -15,7 +18,12 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        //
+        $equipment = Equipment::orderBy('id', 'ASC')->paginate(6);
+
+        $data = [
+            'equipment' => $equipment,
+        ];
+        return view('equipment.index', $data);
     }
 
     /**
@@ -48,6 +56,10 @@ class EquipmentController extends Controller
     public function show(Equipment $equipment)
     {
         //
+        $data = [
+            'equipment' => $equipment,
+        ];
+        return view('equipment.index', $data);
     }
 
     /**

@@ -9,6 +9,23 @@ class Equipment extends Model
 {
     use HasFactory;
 
+    protected $table = 'equipment';//多餘，可略
+
+    protected $fillable =[
+        'name',
+        'eqinformation',
+        'allcount',
+        'rentcount',
+        'inventory',
+        'price',
+        'rentprice',
+        'rentprice',
+        'img',
+        'cleanfee',
+        'maintain',
+        'manager_id',
+    ];
+
     //任何一個器材都對應一個管理者(外來鍵)
     public function managers()
     {
