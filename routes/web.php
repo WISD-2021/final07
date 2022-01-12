@@ -29,6 +29,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('index', function () {
 });
 
 //會員
+//關於
+Route::get('/about', function (){
+    return view('about');
+});
 //個人資料
 Route::middleware(['auth:sanctum', 'verified'])->get('/member/{member}',[MemberController::class,'index'])->name('member.index');//顯示個人資料
 Route::middleware(['auth:sanctum', 'verified'])->get('/member/{member}/edit',[MemberController::class,'edit'])->name('member.edit');//編輯個人資料

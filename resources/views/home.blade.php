@@ -8,18 +8,15 @@
                 <div class="col-md-5">
                     <div class="banner_text">
                         <div class="banner_text_iner">
-                            <h1>Best quality
-                                pillow</h1>
-                            <p>Seamlessly empower fully researched
-                                growth strategies and interoperable internal</p>
-                            <a href="product_list.html" class="btn_1">shop now</a>
+                            <h1>帳篷</h1>
+                            <a href="{{url('/rentequipment')}}" class="btn_1">shop now</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="banner_img">
-            <img src="img/banner.png" alt="#" class="img-fluid">
+            <img src="img/equi/tent/Naturehike牧場金字塔帳-2.jpg" alt="Naturehike牧場金字塔帳" class="img-fluid">
             <img src="img/banner_pattern.png " alt="#" class="pattern_img img-fluid">
         </div>
     </section>
@@ -34,40 +31,19 @@
                         <div class="row align-items-center justify-content-between">
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_img">
-                                    <img src="img/single_product_1.png" class="img-fluid" alt="#">
+                                    <img src="img/equi/vestibule/DD Hammocks 4x4-3.jpg" class="img-fluid" alt="#">
                                     <img src="img/product_overlay.png" alt="#" class="product_overlay img-fluid">
                                 </div>
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
-                                    <h5>Started from $10</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam
-                                        brief modern throw
-                                        pillow case</a> </h2>
-                                    <a href="product_list.html" class="btn_3">Explore Now</a>
+                                    <h2>天幕帳</h2>
+                                    <a href="{{url('/rentequipment')}}" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="single_product_iner">
-                        <div class="row align-items-center justify-content-between">
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="single_product_img">
-                                    <img src="img/single_product_2.png" class="img-fluid" alt="#">
-                                    <img src="img/product_overlay.png" alt="#" class="product_overlay img-fluid">
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-sm-6">
-                                <div class="single_product_content">
-                                    <h5>Started from $10</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam
-                                        brief modern throw
-                                        pillow case</a> </h2>
-                                    <a href="product_list.html" class="btn_3">Explore Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="single_product_iner">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-lg-6 col-sm-6">
@@ -78,10 +54,7 @@
                             </div>
                             <div class="col-lg-5 col-sm-6">
                                 <div class="single_product_content">
-                                    <h5>Started from $10</h5>
-                                    <h2> <a href="single-product.html">Printed memory foam
-                                            brief modern throw
-                                            pillow case</a> </h2>
+                                    <h2>毯子</h2>
                                     <a href="product_list.html" class="btn_3">Explore Now</a>
                                 </div>
                             </div>
