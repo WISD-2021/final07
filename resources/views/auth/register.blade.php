@@ -10,10 +10,21 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-label for="name" value="{{ __('姓名') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-
+            <div class="mt-4">
+                <x-jet-label for="identity" value="{{ __('身分證字號') }}" />
+                <x-jet-input id="identity" class="block mt-1 w-full" type="text" name="identity" :value="old('identity')" required />
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="phone" value="{{ __('電話號碼') }}" />
+                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="address" value="{{ __('地址') }}" />
+                <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required />
+            </div>
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
@@ -28,6 +39,11 @@
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+            <?php
+            include "test.php";
+            $register = new test();
+            $register->Register($_POST['name'], $_POST['pwd'], $_POST['phone'], $_POST['sex']);
+            ?>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">

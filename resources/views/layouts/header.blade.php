@@ -32,7 +32,7 @@ use App\Models\Cart_item;
 
                                 <div class="hearer_icon d-flex align-items-center">
                                     <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                                    <a href="cartitem/cart.blade.php">
+                                    <a href="{{ url('rentcart')}}">
                                         <i class="flaticon-shopping-cart-black-shape"></i>
                                     </a>
                                     @if (Route::has('login'))

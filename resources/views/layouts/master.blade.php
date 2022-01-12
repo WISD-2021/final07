@@ -20,11 +20,14 @@
     <link rel="stylesheet" href="css/themify-icons.css">
     <!-- font awesome CSS -->
     <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/nice-select.css">
     <!-- swiper CSS -->
     <link rel="stylesheet" href="css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -58,6 +61,12 @@
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+
+
+<!-- swiper js -->
+<script src="js/swiper.min.js"></script>
+<!-- swiper js -->
+<script src="js/mixitup.min.js"></script>
 </body>
 
 </html>
