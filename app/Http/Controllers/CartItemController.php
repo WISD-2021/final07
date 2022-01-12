@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart_item;
+use App\Models\Order;
+use App\Models\Orderdetail;
+use App\Models\Member;
 use App\Http\Requests\StoreCart_itemRequest;
 use App\Http\Requests\UpdateCart_itemRequest;
+use Illuminate\Support\Facades\DB;
 
 class CartItemController extends Controller
 {
@@ -15,7 +19,18 @@ class CartItemController extends Controller
      */
     public function index()
     {
-        //
+        $userid = auth()->user()->id;
+        $carts = DB::table('cart_items')
+            ->join('equipment', 'cart_items.equipment_id', '=', 'equipment.id')
+            ->join('members', 'cart_items.member_id', '=', 'members.id')
+            ->where('cart_items.member_id', $userid)
+            ->select('cart_items.id',
+                'equipment.name',
+                'equipment.rentprice',
+                'equipment.img',
+                'cart_items.quantity')
+            ->get();
+        return view('cartitem.index', $carts);
     }
 
     /**
@@ -36,7 +51,20 @@ class CartItemController extends Controller
      */
     public function store(StoreCart_itemRequest $request)
     {
-        //
+        $userid = auth()->member()->id;
+
+        $cart = new cartitem();
+        $cart->member_id = $userid;
+        $cart->equipment_id = $request->input('equipment_id');
+        $cart->rentprice = $request->input('rentprice');
+        $cart->num = $request->input('quantity');
+        $cart->save();
+
+        $Cart_items = Cart_item::orderBy('id', 'ASC')->paginate(20);
+        $data = [
+            'Cart_item' => $Cart_items
+        ];
+        return view('rcartitem.indexp', $data);
     }
 
     /**
@@ -81,6 +109,12 @@ class CartItemController extends Controller
      */
     public function destroy(Cart_item $cart_item)
     {
-        //
+        Cart_item::destroy($cart_item);
+        return redirect()->route('rentcart.index');
+    }
+    static public function total()
+    {
+        $total = 0;
+        return $total;
     }
 }
