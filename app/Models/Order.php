@@ -8,6 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    protected $table = 'orders';
+
+    protected $fillable = [
+        'id',
+        'member_id',
+        'total',
+        'status',
+        'rent_date',
+        'rent_date',
+        'pickup_date',
+        'clean_fee',
+        'damages',
+        'send_date',
+        'manager_id',
+    ];
 
     //每一筆訂都有一個對應的會員(外來鍵)
     public function members()
