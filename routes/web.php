@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Models\Member;
 use App\Models\User;
 use App\Http\Controllers\MemberController;
@@ -8,6 +9,10 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\AdminEquipment;
+
+
+use App\Http\Controllers\ManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +26,7 @@ use App\Http\Controllers\OrderDetailController;
 */
 
 Route::get('/', function () {
+
     return view('home');
 });
 
@@ -53,4 +59,15 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/renteorder',[OrderContro
 Route::middleware(['auth:sanctum', 'verified'])->get('/renteorder/{rentorder}/items',[OrderController::class,'show'])->name('renteorder.items.show');//搜勳的租賃單
 //租賃單明細
 Route::middleware(['auth:sanctum', 'verified'])->get('/renteorder/{rentorder}/detail',[OrderDetailController::class,'show'])->name('rodetail.show');//顯示租賃單明細
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [ManagerController::class, 'index'])->name('admin.index');
+
+    //器材
+    Route::get('/equipments/create',[AdminEquipment::class,'create'])->name('admin.eqipments.create');
+});
 
