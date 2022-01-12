@@ -18,7 +18,7 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $equipment = Equipment::orderBy('id', 'ASC')->paginate(6);
+        $equipment = Equipment::orderBy('id', 'ASC')->paginate(20);
 
         $data = [
             'equipment' => $equipment,
