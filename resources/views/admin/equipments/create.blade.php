@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', '主控台')
+@section('title', '器材管理')
 
 @section('content')
     <!-- Page Heading -->

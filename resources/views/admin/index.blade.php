@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', '主控台')
+@section('title', '器材管理')
 
 @section('content')
     <!-- Page Heading -->
@@ -50,24 +50,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($equipment as $equipmemts)
+                        @foreach($equipment as $equipments)
                             <tr>
-                                <td style="text-align: center; line-height:100px;">{{ $equipmemts->id }}</td>
-                                <td style="text-align: center"><img src="img/{{ $equipmemts->img }}" style="height:100px; width:auto;" alt="..." /></td>
-                                <td style="line-height:100px;">{{ $equipmemts->name }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipmemts->eqinformation }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipmemts->allcount }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipmemts->rentcount }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipmemts->inventory }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipmemts->price }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipmemts->rentprice }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipmemts->claimprice }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipmemts->cleanfee }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipmemts->maintain }}</td>
+                                <td style="text-align: center; line-height:100px;">{{ $equipments->id }}</td>
+                                <td style="text-align: center"><img src="img/{{ $equipments->img }}" style="height:100px; width:auto;" alt="..." /></td>
+                                <td style="line-height:100px;">{{ $equipments->name }}</td>
+                                <td style="text-align: center; line-height:100px;">{{ $equipments->eqinformation }}</td>
+                                <td style="text-align: center; line-height:100px;">{{ $equipments->allcount }}</td>
+                                <td style="text-align: center; line-height:100px;">{{ $equipments->rentcount }}</td>
+                                <td style="text-align: center; line-height:100px;">{{ $equipments->inventory }}</td>
+                                <td style="text-align: center; line-height:100px;">${{ $equipments->price }}</td>
+                                <td style="text-align: center; line-height:100px;">${{ $equipments->rentprice }}</td>
+                                <td style="text-align: center; line-height:100px;">${{ $equipments->claimprice }}</td>
+                                <td style="text-align: center; line-height:100px;">${{ $equipments->cleanfee }}</td>
+                                <td style="text-align: center; line-height:100px;">{{ $equipments->maintain }}</td>
 
 
                                 <td style="text-align: center; line-height:100px;">
-                                    <a class="btn btn-sm btn-primary" href="#">編輯</a>
+                                    <a class="btn btn-sm btn-primary" href="{{ route('admin.equipments.edit', $equipments->id) }}">編輯</a>
                                     /
 
                                         <button class="btn btn-sm btn-danger" type="submit">刪除</button>

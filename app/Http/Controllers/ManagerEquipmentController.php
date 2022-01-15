@@ -57,7 +57,9 @@ class ManagerEquipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $equipments = Equipment::find($id);
+        $data=['equipment'=>$equipments];
+        return view('admin.equipments.edit', $data);
     }
 
     /**
@@ -69,7 +71,9 @@ class ManagerEquipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipment=Equipment::find($id);
+        $equipment->update($request->all());
+        return redirect()->route('admin.index');
     }
 
     /**
