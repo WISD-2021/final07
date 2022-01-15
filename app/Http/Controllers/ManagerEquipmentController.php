@@ -13,7 +13,7 @@ class ManagerEquipmentController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

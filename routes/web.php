@@ -65,10 +65,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::prefix('admin')->group(function () {
+
+    //器材管理
     Route::get('/', [ManagerController::class, 'index'])->name('admin.index');
 
     //新增器材
     Route::get('/equipments/create',[ManagerEquipmentController::class,'create'])->name('admin.equipments.create');
+    //儲存器材
     Route::post('/equipments/store',[ManagerEquipmentController::class,'store'])->name('admin.equipments.store');
 });
 

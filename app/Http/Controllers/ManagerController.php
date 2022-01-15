@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Equipment;
 use App\Models\Manager;
 use App\Http\Requests\StoreManagerRequest;
 use App\Http\Requests\UpdateManagerRequest;
@@ -15,7 +15,9 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $equipments = Equipment::orderBy('created_at','DESC')->get();
+        $data=['equipment'=>$equipments];
+        return view('admin.index',$data);
     }
 
     /**
@@ -25,8 +27,9 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        //
+
     }
+
 
     /**
      * Store a newly created resource in storage.
