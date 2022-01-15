@@ -84,6 +84,7 @@ class ManagerEquipmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Equipment::destroy($id);
+        return redirect()->route('admin.index');
     }
 }

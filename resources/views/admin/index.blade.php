@@ -69,9 +69,11 @@
                                 <td style="text-align: center; line-height:100px;">
                                     <a class="btn btn-sm btn-primary" href="{{ route('admin.equipments.edit', $equipments->id) }}">編輯</a>
                                     /
-
-                                        <button class="btn btn-sm btn-danger" type="submit">刪除</button>
-
+                                    <form action="/admin/equipments/{{$equipments->id}}" method="POST" style="display: inline">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-danger" type="submit" onClick="return confirm('確定要刪除此器材?')">刪除</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

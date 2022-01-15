@@ -76,5 +76,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/equipments/{id}/edit',[ManagerEquipmentController::class,'edit'])->name('admin.equipments.edit');
     //更新器材
     Route::patch('equipments/{equipment}', [ManagerEquipmentController::class, 'update'])->name('admin.equipments.update');
+    //刪除器材
+    Route::delete('equipments/{equipment}', [ManagerEquipmentController::class, 'destroy'])->name('admin.equipments.destroy');
 });
 
