@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', '新增器材')
+@section('title', '主控台')
 
 @section('content')
     <!-- Page Heading -->
@@ -10,6 +10,9 @@
             <li class="breadcrumb-item active">器材管理</li>
         </ol>
     </div>
+
+    <div class="card-body">
+
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-edit me-1"></i>
@@ -30,58 +33,58 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form action="/admin/eqipments" method="POST" role="form">
+            <form action="/admin/equipments/store" method="POST" role="form">
                 @method('POST')
                 @csrf
 
                 <div class="form-group">
-                    <label for="title">器材名稱：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="name">器材名稱：</label>
+                    <input id="name" name="name" class="form-control" placeholder="輸入器材名稱">
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="content">器材資訊：</label>
-                    <textarea id="content" name="content" class="form-control" rows="10"></textarea>
+                    <label for="eqinformation">器材資訊：</label>
+                    <textarea id="eqinformation" name="eqinformation" class="form-control" rows="10"></textarea>
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">總數量：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="allcount">總數量：</label>
+                    <input id="allcount" name="allcount" class="form-control" placeholder="輸入總數量">
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">目前出租數：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="rentcount">目前出租數：</label>
+                    <input id="rentcount" name="rentcount" class="form-control" placeholder="輸目前出租數" >
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">庫存數量：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="inventory">庫存數量：</label>
+                    <input id="inventory" name="inventory" class="form-control" placeholder="輸入庫存數量" >
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">器材單價：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="price">器材單價：</label>
+                    <input id="price" name="price" class="form-control" placeholder="輸入器材單價" >
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">租借價格(單項兩天一夜價格)：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="rentprice">租借價格(單項兩天一夜價格)：</label>
+                    <input id="rentprice" name="rentprice" class="form-control" placeholder="請輸入租借價格" >
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">賠償單價：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="claimprice">賠償單價：</label>
+                    <input id="claimprice" name="claimprice" class="form-control" placeholder="輸入賠償單價" >
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">清潔費：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="cleanfee">清潔費：</label>
+                    <input id="cleanfee" name="cleanfee" class="form-control" placeholder="輸入清潔費" >
                 </div>
                 <p>&nbsp;</p>
                 <div class="form-group">
-                    <label for="title">圖片：</label>
-                    <input id="title" name="title" class="form-control" placeholder="請輸入文章標題">
+                    <label for="img">圖片檔：</label>
+                    <input id="img" type="file" name="img" class="form-control" placeholder="請輸入圖片檔名">
                 </div>
 
                 <p>&nbsp;</p>
@@ -96,6 +99,7 @@
 
             </form>
         </div>
+    </div>
     </div>
     <!-- /.row -->
 @endsection

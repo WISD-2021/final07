@@ -9,7 +9,7 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\AdminEquipment;
+use App\Http\Controllers\ManagerEquipmentController;
 
 
 use App\Http\Controllers\ManagerController;
@@ -67,7 +67,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', [ManagerController::class, 'index'])->name('admin.index');
 
-    //器材
-    Route::get('/equipments/create',[AdminEquipment::class,'create'])->name('admin.eqipments.create');
+    //新增器材
+    Route::get('/equipments/create',[ManagerEquipmentController::class,'create'])->name('admin.equipments.create');
+    Route::post('/equipments/store',[ManagerEquipmentController::class,'store'])->name('admin.equipments.store');
 });
 
