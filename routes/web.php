@@ -26,7 +26,6 @@ use App\Http\Controllers\ManagerController;
 */
 
 Route::get('/', function () {
-
     return view('home');
 });
 
