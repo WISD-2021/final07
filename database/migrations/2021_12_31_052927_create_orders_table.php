@@ -15,7 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->index();
+            $table->bigInteger('member_id')->unsigned();
+            $table->foreign('member_id')->references('id')->on('members');
             $table->integer('total')->unsigned()->comment("總額");
             $table->string('status',20)->comment('租賃狀態');
             $table->date('rent_date')->comment('租用日');

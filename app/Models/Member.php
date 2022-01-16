@@ -15,7 +15,7 @@ class Member extends Model
         'user_id',
         'identity',
         'phone',
-        'phone',
+        'address',
         'status',
     ];
 
