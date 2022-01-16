@@ -35,9 +35,9 @@
                         <thead>
                         <tr>
                             <th style="text-align: center">#</th>
-                            <th style="text-align: center; width:200px;">圖片</th>
-                            <th>器材名稱</th>
-                            <th style="text-align: center">器材資訊</th>
+                            <th style="text-align: center; width:140px;">圖片</th>
+                            <th style="text-align: center;">器材名稱</th>
+                            <th style="text-align: center" width="210">器材資訊</th>
                             <th style="text-align: center">總數量</th>
                             <th style="text-align: center">目前出租數</th>
                             <th style="text-align: center">庫存數量</th>
@@ -45,28 +45,28 @@
                             <th style="text-align: center">租借價格(單向兩天一夜價格)</th>
                             <th style="text-align: center">賠償單價</th>
                             <th style="text-align: center">清潔費</th>
-                            <th style="text-align: center">保養日期</th>
+                            <th style="text-align: center" width="120">保養日期</th>
 
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($equipment as $equipments)
                             <tr>
-                                <td style="text-align: center; line-height:100px;">{{ $equipments->id }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->id }}</td>
                                 <td style="text-align: center"><img src="img/{{ $equipments->img }}" style="height:100px; width:auto;" alt="..." /></td>
-                                <td style="line-height:100px;">{{ $equipments->name }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipments->eqinformation }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipments->allcount }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipments->rentcount }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipments->inventory }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipments->price }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipments->rentprice }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipments->claimprice }}</td>
-                                <td style="text-align: center; line-height:100px;">${{ $equipments->cleanfee }}</td>
-                                <td style="text-align: center; line-height:100px;">{{ $equipments->maintain }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->name }}</td>
+                                <td style="text-align: left; line-height:30px;">{{ $equipments->eqinformation }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->allcount }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->rentcount }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->inventory }}</td>
+                                <td style="text-align: center; line-height:30px;">${{ $equipments->price }}</td>
+                                <td style="text-align: center; line-height:30px;">${{ $equipments->rentprice }}</td>
+                                <td style="text-align: center; line-height:30px;">${{ $equipments->claimprice }}</td>
+                                <td style="text-align: center; line-height:30px;">${{ $equipments->cleanfee }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->maintain }}</td>
 
 
-                                <td style="text-align: center; line-height:100px;">
+                                <td style="text-align: center; line-height:30px;" width="140">
                                     <a class="btn btn-sm btn-primary" href="{{ route('admin.equipments.edit', $equipments->id) }}">編輯</a>
                                     /
                                     <form action="/admin/equipments/{{$equipments->id}}" method="POST" style="display: inline">

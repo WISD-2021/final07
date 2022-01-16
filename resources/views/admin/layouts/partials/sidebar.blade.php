@@ -33,8 +33,11 @@
                         器材管理
                     </a>
 
-
-
+                    <div class="sb-sidenav-menu-heading">Member</div>
+                    <a class="nav-link" href="{{ route('admin.members.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-edit"></i></div>
+                        會員管理
+                    </a>
 
                 </div>
             </div>
