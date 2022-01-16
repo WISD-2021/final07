@@ -81,6 +81,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('equipments/{equipment}', [ManagerEquipmentController::class, 'destroy'])->name('admin.equipments.destroy');
     //會員管理(無法套模板)
     //Route::get('members', [\App\Http\Controllers\AdminMemberController::class, 'index'])->name('admin.members.index');
+    //修改會員狀態
+    Route::patch('/members/{member}',[AdminMemberController::class,'update'])->name('admin.members.update');
 });
 
 //會員管理(用此方式才能讓頁面套到模版)
