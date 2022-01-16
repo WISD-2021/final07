@@ -37,11 +37,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('index', function () {
 //會員
 //關於
 Route::get('/about', function (){
-    return view('about');
+    return view('member.about');
 });
 //個人資料
-Route::middleware(['auth:sanctum', 'verified'])->get('/member/{member}',[MemberController::class,'index'])->name('member.index');//顯示個人資料
-Route::middleware(['auth:sanctum', 'verified'])->get('/member/{member}/edit',[MemberController::class,'edit'])->name('member.edit');//編輯個人資料
+Route::middleware(['auth:sanctum', 'verified'])->get('/member',[MemberController::class,'show'])->name('member.show');//顯示個人資料
+Route::middleware(['auth:sanctum', 'verified'])->get('/member/edit',[MemberController::class,'edit'])->name('member.edit');//編輯個人資料
+Route::middleware(['auth:sanctum', 'verified'])->get('/member/pwd',[MemberController::class,'edit'])->name('member.pwd');//更新密碼
 Route::middleware(['auth:sanctum', 'verified'])->put('/member/{member}',[MemberController::class,'update'])->name('member.update');//更新個人資料
 
 //器材

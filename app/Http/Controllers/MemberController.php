@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -47,7 +49,12 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        $shows=DB::table('members')
+            ->where('members.user_id','=',auth()->user()->id)
+            ->join('users','members.user_id','=','users.id')
+            ->select('users.name','users.email','members.identity','members.phone','members.address')
+            ->get();
+        return view('member.show',$shows);
     }
 
     /**
