@@ -50,7 +50,7 @@ class CreateNewUser implements CreatesNewUsers
         Member::create([
             'user_id'=>$idmax,
             'identity' => $input['identity'],
-            'phone' => $input['identity'],
+            'phone' => $input['phone'],
             'address' => $input['address'],
         ]);
         return $usc;
