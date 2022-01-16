@@ -20,7 +20,7 @@ class CreateMembersTable extends Migration
             $table->string('identity',20)->comment('身分證');
             $table->string('phone',20);
             $table->string('address',30);
-            $table->string('status',10)->comment('帳號狀態');
+            $table->string('status',10)->default('使用中')->comment('帳號狀態');
             $table->timestamps();
         });
     }
