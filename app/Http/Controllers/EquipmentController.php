@@ -18,10 +18,10 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $equipment = Equipment::orderBy('id', 'ASC');
+        $equipments= Equipment::orderBy('id', 'ASC')->paginate(10);
 
         $data = [
-            'equipments' => $equipment,
+            'equipments' => $equipments,
         ];
         return view('equipment.index', $data);
     }
@@ -57,7 +57,7 @@ class EquipmentController extends Controller
     {
         //
         $data = [
-            'equipments' => $equipment,
+            'equipment' => $equipment,
         ];
         return view('equipment.index', $data);
     }
