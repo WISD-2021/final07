@@ -36,8 +36,8 @@
                         <tr>
                             <th style="text-align: center">#</th>
                             <th style="text-align: center; width:140px;">圖片</th>
-                            <th>器材名稱</th>
-                            <th style="text-align: center" width="250">器材資訊</th>
+                            <th style="text-align: center;">器材名稱</th>
+                            <th style="text-align: center" width="210">器材資訊</th>
                             <th style="text-align: center">總數量</th>
                             <th style="text-align: center">目前出租數</th>
                             <th style="text-align: center">庫存數量</th>
@@ -54,7 +54,7 @@
                             <tr>
                                 <td style="text-align: center; line-height:30px;">{{ $equipments->id }}</td>
                                 <td style="text-align: center"><img src="img/{{ $equipments->img }}" style="height:100px; width:auto;" alt="..." /></td>
-                                <td style="line-height:30px;">{{ $equipments->name }}</td>
+                                <td style="text-align: center; line-height:30px;">{{ $equipments->name }}</td>
                                 <td style="text-align: left; line-height:30px;">{{ $equipments->eqinformation }}</td>
                                 <td style="text-align: center; line-height:30px;">{{ $equipments->allcount }}</td>
                                 <td style="text-align: center; line-height:30px;">{{ $equipments->rentcount }}</td>
