@@ -31,19 +31,18 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-label for="password" value="{{ __('密碼') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-label for="password_confirmation" value="{{ __('密碼再次確認') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
-            <?php
-            include "test.php";
-            $register = new test();
-            $register->Register($_POST['name'], $_POST['pwd'], $_POST['phone'], $_POST['sex']);
-            ?>
+            <div class="mt-4">
+                <x-jet-label for="type" value="{{ __('身分') }}" />
+                <x-jet-input id="type" class="mt-1 w-1/2" type="radio" name="type" value="0" checked required/>&nbsp;會員 &emsp;
+            </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
