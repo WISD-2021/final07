@@ -26,7 +26,7 @@ class CreateEquipmentsTable extends Migration
             $table->string('img')->comment('圖片');
             $table->integer('cleanfee')->unsigned()->comment('清潔費');
             $table->date('maintain')->nullable()->comment('保養日期');
-            $table->foreignId('manager_id')->nullable()->index()->comment('保養者');
+            $table->bigInteger('manager_id')->unsigned()->nullable()->index()->comment('保養者');
             $table->timestamps();
         });
     }
