@@ -40,10 +40,10 @@ use App\Models\Cart_item;
                                                 <a href="{{ url('/')}}" class="text-sm text-gray-700 dark:text-gray-500 underline"></a>
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        11
+                                                        {{Auth::user()->name}}
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
-                                                        <a class="dropdown-item" href="{{ url('memeber')}}"> 個人資料</a><!--還沒設計好-->
+                                                        <a class="dropdown-item" href="{{ url('member')}}"> 個人資料</a><!--還沒設計好-->
                                                         <a class="dropdown-item" href="{{ url('Order')}}">租賃單</a><!--還沒設計好-->
                                                     </div>
                                                 </li>
