@@ -9,7 +9,7 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\AdminEquipment;
+use App\Http\Controllers\ManagerEquipmentController;
 
 
 use App\Http\Controllers\ManagerController;
@@ -65,9 +65,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [ManagerController::class, 'index'])->name('admin.index');
 
-    //器材
-    Route::get('/equipments/create',[AdminEquipment::class,'create'])->name('admin.eqipments.create');
+    //器材管理
+    Route::get('/', [ManagerController::class, 'index'])->name('admin.index');
+    //新增器材
+    Route::get('/equipments/create',[ManagerEquipmentController::class,'create'])->name('admin.equipments.create');
+    //儲存器材
+    Route::post('/equipments/store',[ManagerEquipmentController::class,'store'])->name('admin.equipments.store');
+    //編輯器材
+    Route::get('/equipments/{id}/edit',[ManagerEquipmentController::class,'edit'])->name('admin.equipments.edit');
+    //更新器材
+    Route::patch('equipments/{equipment}', [ManagerEquipmentController::class, 'update'])->name('admin.equipments.update');
+    //刪除器材
+    Route::delete('equipments/{equipment}', [ManagerEquipmentController::class, 'destroy'])->name('admin.equipments.destroy');
 });
 

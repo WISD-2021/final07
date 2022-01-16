@@ -19,7 +19,7 @@ class Equipment extends Model
         'inventory',
         'price',
         'rentprice',
-        'rentprice',
+        'claimprice',
         'img',
         'cleanfee',
         'maintain',

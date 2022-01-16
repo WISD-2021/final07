@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Equipment;
-use App\Models\Manager;
-use App\Http\Requests\StoreManagerRequest;
-use App\Http\Requests\UpdateManagerRequest;
+use Illuminate\Http\Request;
 
-class ManagerController extends Controller
+class ManagerEquipmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        $equipments = Equipment::orderBy('created_at','DESC')->get();
-        $data=['equipment'=>$equipments];
-        return view('admin.index',$data);
+
     }
 
     /**
@@ -27,28 +23,28 @@ class ManagerController extends Controller
      */
     public function create()
     {
-
+        return view('admin.equipments.create');
     }
-
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreManagerRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreManagerRequest $request)
+    public function store(Request $request)
     {
-        //
+        Equipment::create($request->all());
+        return redirect()->route('admin.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Manager  $manager
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Manager $manager)
+    public function show($id)
     {
         //
     }
@@ -56,34 +52,39 @@ class ManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Manager  $manager
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Manager $manager)
+    public function edit($id)
     {
-        //
+        $equipments = Equipment::find($id);
+        $data=['equipment'=>$equipments];
+        return view('admin.equipments.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateManagerRequest  $request
-     * @param  \App\Models\Manager  $manager
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateManagerRequest $request, Manager $manager)
+    public function update(Request $request, $id)
     {
-        //
+        $equipment=Equipment::find($id);
+        $equipment->update($request->all());
+        return redirect()->route('admin.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Manager  $manager
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Manager $manager)
+    public function destroy($id)
     {
-        //
+        Equipment::destroy($id);
+        return redirect()->route('admin.index');
     }
 }
