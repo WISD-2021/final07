@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart_item;
 use App\Models\Equipment;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
-use App\Models\Cart_item;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\request;
 
 class EquipmentController extends Controller
 {
@@ -18,7 +19,7 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $equipments= Equipment::orderBy('id', 'ASC')->paginate(10);
+        $equipments= Equipment::orderBy('id', 'ASC')->paginate(20);
 
         $data = [
             'equipments' => $equipments,
@@ -44,7 +45,9 @@ class EquipmentController extends Controller
      */
     public function store(StoreEquipmentRequest $request)
     {
-        //
+        #dd($request);
+        Cart_item::create($request->all());
+        return redirect()->route('rentcart.store');
     }
 
     /**
@@ -55,11 +58,12 @@ class EquipmentController extends Controller
      */
     public function show(Equipment $equipment)
     {
-        //
-        $data = [
-            'equipment' => $equipment,
-        ];
-        return view('equipment.index', $data);
+
+        $name=Auth::user()->id;
+        $equipment=Equipment::where('id','=',$equipment)->get();
+        $data=['equipment'=>$equipment,'name'=>$name];
+
+        return view('equipment.show', $data);
     }
 
     /**

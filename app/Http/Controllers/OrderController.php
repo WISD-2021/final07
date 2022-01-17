@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -15,7 +17,20 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $userid = DB::table('members')->where('user_id' ,Auth::user()->id)->first();
+
+        $ODs = DB::table('orders')
+            ->where('orders.member_id', $userid)
+            ->select('orders.id',
+                'orders.total',
+                'created_at'
+            )
+            ->get();
+        $data = [
+            'ODs' => $ODs
+        ];
+        return view('order.index', $data);
+
     }
 
     /**
@@ -36,7 +51,18 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $userid = DB::table('members')->where('user_id' ,Auth::user()->id)->first();
+
+        $os = new Order();
+        $os->member_id = $userid;
+        $os->total = $request->input('total');
+        $os->save();
+        $orders = Order::orderBy('id', 'ASC')->paginate(100);
+        $data = [
+            'orders' => $orders
+        ];
+
+        return view('order.index', $data);
     }
 
     /**

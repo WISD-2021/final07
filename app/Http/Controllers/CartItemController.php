@@ -9,6 +9,7 @@ use App\Models\Member;
 use App\Http\Requests\StoreCart_itemRequest;
 use App\Http\Requests\UpdateCart_itemRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CartItemController extends Controller
 {
@@ -19,7 +20,7 @@ class CartItemController extends Controller
      */
     public function index()
     {
-        $userid = auth()->user()->id;
+        $userid =DB::table('members')->where('user_id' ,Auth::user()->id)->first();
         $carts = DB::table('cart_items')
             ->join('equipment', 'cart_items.equipment_id', '=', 'equipment.id')
             ->join('members', 'cart_items.member_id', '=', 'members.id')
@@ -30,7 +31,7 @@ class CartItemController extends Controller
                 'equipment.img',
                 'cart_items.quantity')
             ->get();
-        return view('cartitem.index', $carts);
+        return view('cart.index', $carts);
     }
 
     /**
@@ -40,7 +41,9 @@ class CartItemController extends Controller
      */
     public function create()
     {
-        //
+
+
+
     }
 
     /**
@@ -51,20 +54,20 @@ class CartItemController extends Controller
      */
     public function store(StoreCart_itemRequest $request)
     {
-        $userid = auth()->member()->id;
+        $userid =DB::table('members')->where('user_id' ,Auth::user()->id)->first();DB::table('members')->where('id' ,auth()->user()->id)->first();
 
         $cart = new cartitem();
         $cart->member_id = $userid;
-        $cart->equipment_id = $request->input('equipment_id');
-        $cart->rentprice = $request->input('rentprice');
-        $cart->num = $request->input('quantity');
+        $cart->equipment_id = $request->input('e_id');
+        //$cart->rentprice = $request->input('price');
+        $cart->quantity = $request->input('num');
         $cart->save();
 
         $Cart_items = Cart_item::orderBy('id', 'ASC')->paginate(20);
         $data = [
             'Cart_item' => $Cart_items
         ];
-        return view('rcartitem.indexp', $data);
+        return view('cart.index', $data);
     }
 
     /**
