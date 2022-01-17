@@ -35,7 +35,7 @@
                     <center>
                         <font size="4">
                             @foreach ($members as $member)
-                            <form  method='post' action='{{route('member.update',$member->id)}}'  role="form">
+                            <form  method='post' action='{{route('member.update',auth()->user()->id)}}'  role="form">
                                 @method('PUT')
                                 @csrf
 

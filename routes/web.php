@@ -47,7 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->put('/member/{member}',[MemberC
 
 //器材
 Route::get('/rentequipment',[EquipmentController::class,'index'])->name('rentequipment.index');//顯示器材
-//Route::get('/rentequipment/{equipment}',[EquipmentController::class,'show'])->name('rentequipment.show');//顯示詳細器材資訊
+Route::get('/rentequipment/{equipment}',[EquipmentController::class,'show'])->name('rentequipment.show');//顯示詳細器材資訊
 
 //購物車
 Route::middleware(['auth:sanctum', 'verified'])->get('/rentcart',[CartItemController::class,'index'])->name('rentcart.index');//顯示購物車內容
