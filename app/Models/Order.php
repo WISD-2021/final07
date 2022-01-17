@@ -22,6 +22,7 @@ class Order extends Model
         'damages',
         'send_date',
         'manager_id',
+        'created_at',
     ];
 
     //每一筆訂都有一個對應的會員(外來鍵)

@@ -36,7 +36,18 @@ class OrderDetailController extends Controller
      */
     public function store(StoreOrder_detailRequest $request)
     {
-        //
+        $userid = DB::table('members')->where('user_id' ,Auth::user()->id)->first();
+
+        $ods = new Orderdetail();
+        $ods->member_id = $userid;
+        //$ods->total = $request->input('total');
+        $ods->save();
+        $orderdetails = Order_detail::orderBy('id', 'ASC')->paginate(100);
+        $data = [
+            'orders' => $orderdetails
+        ];
+
+        return view('order.index', $data);
     }
 
     /**

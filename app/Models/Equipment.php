@@ -12,6 +12,7 @@ class Equipment extends Model
     protected $table = 'equipments';//多餘，可略
 
     protected $fillable =[
+        'id',
         'name',
         'eqinformation',
         'allcount',

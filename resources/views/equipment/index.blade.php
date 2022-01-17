@@ -43,9 +43,28 @@
                             @foreach($equipments as $equipment)
                             <div class="col-lg-6 col-sm-6">
                                 <div class="single_product_item">
-                                    <img src="{{$equipment->img}}" alt="{{$equipment->name}}" class="img-fluid">
-                                    <h3> <a href="">{{$equipment->name}}</a> </h3>
+                                    <img src="/img/equi/{{$equipment->img}}" alt="{{$equipment->name}}" class="img-fluid">
+                                    <p><h3>{{$equipment->name}} </h3></p>
+                                    <form action="{{route('rentcart.add')}}" method="post" role="form">
+                                    @method('post')
                                     @csrf
+                                        <label for="quantity">數量:</label>
+                                        <select id="num" name="num">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <br><br>
+                                        <input type="hidden" name="e_id" value="{{$equipment->id}}">
+                                        <input type="hidden" name="name" value="{{$equipment->name}}">
+                                        <input type="hidden" name="price" value="{{$equipment->price}}">
+
+                                        <button type="submit" onclick="return confirm('是否確認加入購物車?')"
+                                                class="btn btn-sm btn-primary" style="height: 50px;width: 200px">加入購物車
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             @endforeach
