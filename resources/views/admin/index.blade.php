@@ -53,7 +53,7 @@
                         @foreach($equipment as $equipments)
                             <tr>
                                 <td style="text-align: center; line-height:30px;">{{ $equipments->id }}</td>
-                                <td style="text-align: center"><img src="img/{{ $equipments->img }}" style="height:100px; width:auto;" alt="..." /></td>
+                                <td style="text-align: center"><img src="/img/equi/{{ $equipments->img }}" style="height:100px; width:auto;" alt="..." /></td>
                                 <td style="text-align: center; line-height:30px;">{{ $equipments->name }}</td>
                                 <td style="text-align: left; line-height:30px;">{{ $equipments->eqinformation }}</td>
                                 <td style="text-align: center; line-height:30px;">{{ $equipments->allcount }}</td>

@@ -74,7 +74,7 @@
                 <p>&nbsp;</p>
                 <div class="form-group">
                     <label for="img">圖片檔：{{$equipment->img}}</label>
-                    <img class="t_img" src="/../../img/{{$equipment->img}}">
+                    <img class="t_img" src="/img/equi/{{$equipment->img}}">
                     <input id="img" type="file" name="img" class="form-control" placeholder="請輸入圖片檔名" value="{{ old('img',$equipment->img) }}">
                 </div>
                 <p>&nbsp;</p>

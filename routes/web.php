@@ -42,13 +42,12 @@ Route::get('/about', function (){
 });
 //個人資料
 Route::middleware(['auth:sanctum', 'verified'])->get('/member',[MemberController::class,'show'])->name('member.show');//顯示個人資料
-Route::middleware(['auth:sanctum', 'verified'])->get('/member/edit',[MemberController::class,'edit'])->name('member.edit');//編輯個人資料
-Route::middleware(['auth:sanctum', 'verified'])->get('/member/pwd',[MemberController::class,'edit'])->name('member.pwd');//更新密碼
+Route::middleware(['auth:sanctum', 'verified'])->get('/member/{member}/edit',[MemberController::class,'edit'])->name('member.edit');//編輯個人資料
 Route::middleware(['auth:sanctum', 'verified'])->put('/member/{member}',[MemberController::class,'update'])->name('member.update');//更新個人資料
 
 //器材
 Route::get('/rentequipment',[EquipmentController::class,'index'])->name('rentequipment.index');//顯示器材
-Route::get('/rentequipment/{equipment}',[EquipmentController::class,'show'])->name('rentequipment.show');//顯示詳細器材資訊
+//Route::get('/rentequipment/{equipment}',[EquipmentController::class,'show'])->name('rentequipment.show');//顯示詳細器材資訊
 
 //購物車
 Route::middleware(['auth:sanctum', 'verified'])->get('/rentcart',[CartItemController::class,'index'])->name('rentcart.index');//顯示購物車內容
@@ -58,7 +57,6 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/rentcart',[CartItemContr
 //租賃單
 Route::middleware(['auth:sanctum', 'verified'])->get('/renteorder',[OrderController::class,'index'])->name('renteorder.index');//顯示租賃單
 Route::middleware(['auth:sanctum', 'verified'])->post('/renteorder',[OrderController::class,'store'])->name('renteorder.store');//儲存租賃單
-Route::middleware(['auth:sanctum', 'verified'])->get('/renteorder/{rentorder}/items',[OrderController::class,'show'])->name('renteorder.items.show');//搜勳的租賃單
 //租賃單明細
 Route::middleware(['auth:sanctum', 'verified'])->get('/renteorder/{rentorder}/detail',[OrderDetailController::class,'show'])->name('rodetail.show');//顯示租賃單明細
 
