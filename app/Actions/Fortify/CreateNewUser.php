@@ -52,6 +52,7 @@ class CreateNewUser implements CreatesNewUsers
             'identity' => $input['identity'],
             'phone' => $input['phone'],
             'address' => $input['address'],
+            'status'=>'使用中',
         ]);
         return $usc;
     }

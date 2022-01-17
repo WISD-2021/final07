@@ -47,14 +47,14 @@ class MemberController extends Controller
      * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show()
     {
         $shows=DB::table('members')
             ->where('members.user_id','=',auth()->user()->id)
             ->join('users','members.user_id','=','users.id')
-            ->select('users.name','users.email','members.identity','members.phone','members.address')
+            ->select('users.id','users.name','users.email','members.identity','members.phone','members.address')
             ->get();
-        return view('member.show',$shows);
+        return view('member.show',['shows'=>$shows]);
     }
 
     /**
@@ -65,7 +65,14 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        $member=Member::find($member)->user_id;
+        $members=DB::table('members')
+            ->where($member,'=',auth()->user()->id)
+            ->join('users','members.user_id','=','users.id')
+            ->select('users.id','users.name','users.email','members.identity','members.phone','members.address')
+            ->get();
+
+        return view('member.edit',['members'=>$members]);
     }
 
     /**
@@ -77,7 +84,18 @@ class MemberController extends Controller
      */
     public function update(UpdateMemberRequest $request, Member $member)
     {
-        //
+        $member=Member::find($member);
+        $ust=Auth::user()->name;
+        $data=$this->validate($request,	[
+            'name'	=>	'required|min:3|max:255',
+            'phone'=>'required|max:20',
+            'address'=>'required|max:30',
+        ]);
+        $member->phone=$data['phone']->save();
+        $member->address=$data['address']->save();
+        $ust->name=$data['name']->save();
+
+        return redirect()->route('member.show');
     }
 
     /**
