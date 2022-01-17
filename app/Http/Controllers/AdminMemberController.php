@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -59,7 +60,7 @@ class AdminMemberController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -71,7 +72,9 @@ class AdminMemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $members=Member::find($id);
+        $members->update($request->all());
+        return redirect()->route('admin.members.index');
     }
 
     /**

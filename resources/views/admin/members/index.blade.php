@@ -33,6 +33,7 @@
                         <th  style="text-align: center">身分證</th>
                         <th  style="text-align: center">電話</th>
                         <th  style="text-align: center">地址</th>
+                        <th  style="text-align: center">狀態</th>
                         <th  style="text-align: center">加入時間</th>
                     </tr>
                     </thead>
@@ -47,7 +48,19 @@
                                     <td>{{ $members->identity }}</td>
                                     <td>{{ $members->phone }}</td>
                                     <td>{{ $members->address }}</td>
+                                    <form action="/admin/members/{{$members->id}}" method="POST" role="form">
+                                        @method('PATCH')
+                                        @csrf
+                                    <td><select id="status" name="status" class="form-control" >
+                                            <option>{{ old('address',$members->status) }}</option>
+                                            <option>使用中</option>
+                                            <option>已停用</option>
+                                        </select></td>
                                     <td>{{ $users->created_at }}</td>
+                                    <td style="text-align: center; line-height:30px;" width="140">
+                                        <button type="submit" class="btn btn-primary">更新</button>
+                                    </td>
+                                    </form>
                                 @endif
                             @endforeach
                         </tr>
