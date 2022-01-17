@@ -65,9 +65,9 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        $member=Member::find($member)->user_id;
+        $member=Member::find($member);
         $members=DB::table('members')
-            ->where($member,'=',auth()->user()->id)
+            ->where('members.user_id','=',auth()->user()->id)
             ->join('users','members.user_id','=','users.id')
             ->select('users.id','users.name','users.email','members.identity','members.phone','members.address')
             ->get();
@@ -84,18 +84,24 @@ class MemberController extends Controller
      */
     public function update(UpdateMemberRequest $request, Member $member)
     {
-        $member=Member::find($member);
-        $ust=Auth::user()->name;
-        $data=$this->validate($request,	[
-            'name'	=>	'required|min:3|max:255',
-            'phone'=>'required|max:20',
-            'address'=>'required|max:30',
-        ]);
-        $member->phone=$data['phone']->save();
-        $member->address=$data['address']->save();
-        $ust->name=$data['name']->save();
 
-        return redirect()->route('member.show');
+            $member=Member::find($member);
+            $ust=Auth::user()->name;
+            $this->validate($request,	[
+                'name'	=>	'required|min:3|max:255',
+                'phone'=>'required|max:20',
+                'address'=>'required|max:30',
+            ]);
+            //$member->update($request->all());
+            $member->update($request->only(['phone', 'address']));
+            //$member->phone=$request['phone'];
+           //$member->address=$request['address'];
+            //$member->save();
+            //$ust->name=$request['name'];
+            $ust->update($request->only(['name']));
+
+            return redirect()->route('member.show');
+
     }
 
     /**

@@ -45,6 +45,7 @@
                                 <div class="single_product_item">
                                     <img src="/img/equi/{{$equipment->img}}" alt="{{$equipment->name}}" class="img-fluid">
                                     <p><h3>{{$equipment->name}} </h3></p>
+                                    <p><h3> <?php nl2br("{{$equipment->eqinformation}}");?> </h3></p>
                                     <form action="{{route('rentcart.add')}}" method="post" role="form">
                                     @method('post')
                                     @csrf
